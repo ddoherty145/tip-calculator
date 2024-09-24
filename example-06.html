@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<main>
+		<p>Bill Ammount<input id="bill-amount" type="number"></p>
+		<p>Tip Ammount  <input id="tip-percent" type="number"></p>
+		<div id="display"></div>
+	</main>
+	
+	<script>
+		
+		// Here are three refernces for the elements above 
+		// There are two inputs and one div to display the result
+    
+		const billAmountInput = document.querySelector('#bill-amount')
+		const tipPercentInput = document.querySelector('#tip-percent')
+		const display = document.querySelector('#display')
+
+    // Find the elements above that match the id names used here. 
+    // You will be using the variables here to work those DOM elements. 
+
+		// Write a function that takes two parameters: 
+		// billAmount and tipPercent
+		// It should calculate and return the tip amount. 
+		function calculateTip(billAmount , tipPercent) {
+			const bill = parseFloat(billAmount);
+			const tip = parseFloat(tipPercent) /100;
+			const tipAmount = bill * tip;
+			return tipAmount;
+		}
+
+		// TODO: Define a new updateDisplay function. 
+
+		function updateDisplay(){
+			const tipPercent = tipPercentInput.value;
+			const billAmount = billAmountInput.value;
+			const tipAmount = calculateTip(billAmount, tipPercent);
+			display.innerHTML = `For a bill of $${billAmount}, with a tip of ${tipPercent}%, the tip amount is: $${tipAmount.toFixed(2)}`;
+		}
+
+    billAmountInput.addEventListener('input', updateDisplay);
+	tipPercentInput.addEventListener('input', updateDisplay);
+		// This function will call caclulate tip function 
+		// and display the results. 
+    
+    // TODO: Inside the updateDisplay function get the value 
+    // from billAmountInput and tipPercentInput. To do this
+    // use the value property. Soemthing like this:
+    // const tipPercent = tipPercentInput.value
+
+    // TODO: Calculate the tip amount by passing the values 
+    // from the billAmountInput and tipPercentInput to the 
+    // the calculateTip function
+
+    // TODO: Last, update the display element using the innerHTML
+    // property and display a message showing the bill, tip percent
+    // and the tip amount. 
+
+    // The code in the last three steps should all be inside of 
+    // the updateDisplay function. 
+
+		// You want to call the update display function when either 
+    // the billAmountInput or the tipPercentInput change their 
+    // values. To do this you will create an event listener for 
+    // each of these elements. This code goes outside the other
+    // functions! 
+
+		// TODO: Add an event listener to the billAmountInput. 
+		// The event should be 'input' and the handler function 
+		// should the updateDisplay function you just wrote. 
+
+		// TODO: Add an event listener to the tipAmountInput. 
+		// The event should be 'input' and the handler function
+		// should the updateDisplay function. 
+
+		// Notice how you can use the same function for both 
+    // event listeners! 
+
+		// Test your work. Entering a value in the bill amount 
+		// or tip amount should update the display and show 
+		// the calulated tip. 
+
+		// You may see odd results like: 2.8659000000000003
+		// when entering some values. This is correct, and 
+		// is a result of how computers convert base 10 numbers 
+		// the base 2 binary values that they work with. 
+
+    // TODO: To fix display issues around weird numbers you can
+    // number.toFixed(2) this method rounds a number off to 
+    // a number of decimal places. Use it like this: 
+    // const x = 99
+    // x.toFixed(2) <- x becomes "99.00"
+    // Notice that the value returned from toFixed() is a string! 
+    // You should use this at the point where your numbers
+    // displayed after you have done your math! 
+
+		// TODO: Read your code and reflect on your work. 
+		// Identify the elements and by their ID names. 
+		// connect these to the variables that reference 
+		// those elements. 
+		
+		// TODO: Notice how the code here is broken into 
+		// two functions. It would have been possible to 
+		// use a single function. 
+    
+		// It's best practice to create more smaller 
+		// specialized functions rather than a single large
+		// function that does everything.
+    
+		// Consider the calculateTip() function could be 
+		// used in any software project that needed to 
+		// calculate a tip.
+    
+		// The updateDisplay() function on the other 
+		// hand is tied to this particular project becuase 
+		// the elements it refers to would probably only 
+		// exist in this html file. 
+
+		// The inputs should have some labels. Add Label elements
+		// Use these correctly! https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
+
+		// TODO: Style the tip caluclator...
+		// 1. Set the font 
+		// 2. Set the font size of the inputs 
+		// 3. Give the inputs a border
+		// 4. Give the inputs some padding
+		// 5. Use flex to arrange the inputs in a column
+		// 6. Set the height of the html and body elements to 100%
+		// 7. Place the main element in the middle of the page. You 
+		// can do this by applying flex to the body and setting both
+		// justify-content and align-items to center. 
+		
+		
+
+	</script>
+	<style>
+		html{
+			height: 100%;
+		}
+		body{
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			border: 3px black solid;
+			background-color: tan;
+			height: 100%;
+			font-size:x-large;
+			font-family: 'Courier New', Courier, monospace;
+			
+		}
+
+		#bill-amount{
+			padding: 1em;
+			margin: 1em;
+
+		}
+
+		#tip-percent{
+			padding: 1em;
+			margin: 1em;
+		}
+
+		#display{
+			padding: 1em;
+			border: 2.4px rgb(57, 119, 111) dashed;
+			margin-bottom: 1em;
+		}
+	</style>
+</body>
+</html>
